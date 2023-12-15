@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiTestApp"
+             x:Class="MauiTestApp.MainPage">
+
+    <ListView x:Name="MyListView"
+              IsEnabled="False"
+              ItemsSource="{Binding Source={x:Static local:MyTest.Instance}, Path=Items}"
+              SelectionMode="None"
+              IsPullToRefreshEnabled="True"
+              Refreshing="ListView_OnRefreshing">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <HorizontalStackLayout>
+                        <Label Text="{Binding Name}" />
+                        <Switch IsToggled="{Binding Enabled}" />
+                    </HorizontalStackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+</ContentPage>
